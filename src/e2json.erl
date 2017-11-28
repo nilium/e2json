@@ -111,13 +111,15 @@ is_proplist1(_) ->
 -spec map_json(term()) -> term().
 map_json(Atom) when is_atom(Atom) ->
     atom_to_binary(Atom, utf8);
+map_json(Map) when is_map(Map) ->
+    map_json(maps:to_list(Map));
 % Special cases supported by jsx
 map_json([{}] = Term) -> Term;
 map_json([] = Term) -> Term;
 % Map proplists and such -- proplist keys are untouched
 map_json(Term) when is_list(Term) ->
     case is_proplist(Term) of
-        true -> [{K, map_json(V)} || {K, V} <- Term];
+        true -> [{map_json(K), map_json(V)} || {K, V} <- Term];
         false ->
             case io_lib:printable_unicode_list(Term) of
                 true -> list_to_binary(Term);
