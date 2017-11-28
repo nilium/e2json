@@ -1,0 +1,4 @@
+[{<<"jsx">>,
+  {git,"https://github.com/talentdeficit/jsx.git",
+       {ref,"2ecf598b5f1192acf63baeed1dc7fa45149b4e35"}},
+  0}].
