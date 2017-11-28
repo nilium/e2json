@@ -1,6 +1,8 @@
 e2json
 ======
 
+**Usage:** `e2json [-h] [--] FILE...`
+
 e2json is an escript to read Erlang term files (`file:consult`) and convert them
 to JSON. Each file's JSON is printed separated by a newline, and the final JSON
 has a trailing newline ("\n").
